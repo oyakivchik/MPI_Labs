@@ -3,7 +3,7 @@ from mpi4py import MPI
 comm = MPI.COMM_WORLD
 size = comm.Get_size()
 
-newGroup = comm.group.Excl([size-2])
+newGroup = comm.group.Excl([size-1])
 
 newComm = comm.Create_group(newGroup)
 if newComm != MPI.COMM_NULL:
