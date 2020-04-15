@@ -12,7 +12,7 @@ num_of_processes = [2, 10, 100, int(num_cpus/2), num_cpus]
 num_of_processes.sort()
 intervals=[]
 for entry in num_of_processes:
-    TASK_OUTPUT = subprocess.run(["mpiexec", "-n", "8", "python3", "task.py"], stdout=subprocess.PIPE, universal_newlines=True).stdout
+    TASK_OUTPUT = subprocess.run(["mpiexec", "-n", str(entry), "python3", "task.py"], stdout=subprocess.PIPE, universal_newlines=True).stdout
     TASK_ENTRIES = TASK_OUTPUT.split('\n')
     intervals.append(float(TASK_ENTRIES[1]))
 print(intervals)
