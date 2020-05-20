@@ -17,7 +17,7 @@ else:
 comm.send(f"{rank}", dest=receiver)
 while True:
     rec_message = comm.recv(source=sender)
-    print(f"Process #{str(rank)}: {rec_message}\n\n\n\n--------------------------------------------------------\n\n\n\n")
+    print(
+        f"Process #{str(rank)}: {rec_message}\n\n\n\n--------------------------------------------------------\n\n\n\n")
     send_message = f"{rec_message},{rank}"
     comm.send(send_message, dest=receiver)
-    

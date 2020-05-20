@@ -28,6 +28,6 @@ print(f"{rank}: min_num = {data}")
 
 data = comm.reduce(data, MPI.PROD, root=0)
 if rank == 0:
-    print (f"Data in process #{rank} is {data}")
+    print(f"Data in process #{rank} is {data}")
 else:
     assert data is None

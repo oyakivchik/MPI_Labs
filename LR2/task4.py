@@ -3,7 +3,7 @@ from mpi4py import MPI
 comm = MPI.COMM_WORLD
 rank = comm.Get_rank()
 size = comm.Get_size()
-if size!=2:
+if size != 2:
     print("ERROR! Run exactly 2 processes!!!")
     exit
 if rank == 0:

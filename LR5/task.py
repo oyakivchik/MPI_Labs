@@ -40,13 +40,13 @@ data = comm.bcast(data, root=0)
 start = time.time()
 summary = 0
 for i in data['ranges'][rank]:
-    if i%2==0:
+    if i % 2 == 0:
         summary = summary + sum(data['matrix'][i])
 summary = comm.reduce(summary, MPI.SUM, root=0)
 
 if rank == 0:
     finish = time.time()
     interval = finish - start
-    print (f"{summary}\n{interval}")
+    print(f"{summary}\n{interval}")
 else:
     assert summary is None
