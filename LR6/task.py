@@ -9,7 +9,6 @@ size = comm.Get_size()
 
 data = comm.scatter(data, root=0)
 
-
 count = 32
 group_size = 2
 while(group_size <= count):
@@ -41,7 +40,7 @@ while(group_size <= count):
             pass
     inner_count = group_size
     inner_rank = rank_in_group
-    while (step > 2):
+    while (step > 1):
         inner_group_size = int(inner_count/2)
         inner_group = int(inner_rank/inner_group_size)
         step = int(inner_group_size/2)
@@ -86,3 +85,5 @@ if rank==0:
 else:
     comm.recv(source=rank-1)
     print(data, end=" ")
+    if rank!=31:
+        comm.send(flag, dest=rank+1)
