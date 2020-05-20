@@ -80,4 +80,9 @@ while(group_size <= count):
         else:
             pass
     group_size=int(group_size*2)
-print(f"{rank}: {data}")
+if rank==0:
+    print(data, end=" ")
+    comm.send(flag, dest=1)
+else:
+    comm.recv(source=rank-1)
+    print(data, end=" ")
